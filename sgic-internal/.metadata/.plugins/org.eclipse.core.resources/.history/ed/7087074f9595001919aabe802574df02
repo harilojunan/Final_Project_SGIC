@@ -1,0 +1,64 @@
+package com.sgic.internal.product.controller.dto.mapper;
+
+import java.util.List;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sgic.internal.product.controller.dto.ProductData;
+import com.sgic.internal.product.controller.dto.converter.ProductConverter;
+import com.sgic.internal.product.entities.Product;
+import com.sgic.internal.product.services.ProductService;
+
+@Service
+public class ProductMapper {
+	
+	@Autowired
+	ProductConverter productConverter;
+	
+	@Autowired
+	ProductService productService;
+	
+	private static Logger logger = LogManager.getLogger(ProductData.class);
+	
+	@SuppressWarnings("static-access")
+	public Product saveProduct(ProductData productData){
+		logger.info("productMapper -> product save");
+		return productService.createProduct(productConverter.ProductDataTOProductEntity(productData));
+	}
+	
+	
+	@SuppressWarnings("static-access")
+	public Product updateProduct(ProductData productData) {
+		logger.info("productMapper -> update product");
+		return productService.updateProduct(productConverter.ProductDataTOProductEntity(productData));
+		
+	}
+	
+	@SuppressWarnings("unused")
+	public ProductData getProductById(Long productRegiId) {
+		logger.info("productMapper -> get product By id");
+		Product product = productService.findProductById(productRegiId);
+		return null;
+		
+	}
+	
+	public ProductData deleteProduct(Long productRegiId) {
+		logger.info("productMapper -> delete product");
+		productService.deleteProduct(productRegiId);
+		return null;
+		
+	}
+	
+	@SuppressWarnings("static-access")
+	public List<ProductData> getAllProduct() {
+		logger.info("productMapper -> All Company data Retrieved");
+		List<Product> productList = productService.findAllProduct();
+		return productConverter.ProductEntityListTOProductDataList(productList);
+	}
+	
+
+}

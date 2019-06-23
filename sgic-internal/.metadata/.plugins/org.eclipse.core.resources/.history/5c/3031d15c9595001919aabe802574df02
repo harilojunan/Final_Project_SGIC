@@ -1,0 +1,63 @@
+package com.sgic.internal.product.services.impl;
+
+import java.util.List;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sgic.internal.product.entities.Product;
+import com.sgic.internal.product.repositories.ProductRepository;
+import com.sgic.internal.product.services.ProductService;
+
+@Service
+public class ProductServiceImpl implements ProductService {
+	
+	@Autowired
+	ProductRepository productRepository;
+	
+	private static Logger logger = LogManager.getLogger(ProductRepository.class);
+
+	@Override
+	public Product createProduct(Product product) {
+		logger.info("service started -> SaveProduct");
+		return productRepository.save(product);
+	}
+
+	@Override
+	public Product updateProduct(Product product) {
+		logger.info("service started -> UpdateProduct");
+		Long id = product.getProductRegiId();
+		logger.info("service started -> GetProductById");
+		boolean isExist = productRepository.findOne(id) != null;
+		if (isExist) {
+			logger.info("service started -> Updated by ProductId");
+			return productRepository.save(product);
+		}else {
+			logger.info("service started -> productId not found");
+		}
+		return null;	
+	}
+
+	@Override
+	public void deleteProduct(Long productRegiId) {
+		logger.info("service started -> DeleteProduct");
+		productRepository.delete(productRegiId);
+	}
+
+	@Override
+	public List<Product> findAllProduct() {
+		logger.info("service started -> GetAllProduct");
+		return productRepository.findAll();
+	}
+
+	@Override
+	public Product findProductById(Long productRegiId) {
+		logger.info("service started -> GetProductById");
+		return productRepository.findOne(productRegiId);
+	}
+
+
+
+}

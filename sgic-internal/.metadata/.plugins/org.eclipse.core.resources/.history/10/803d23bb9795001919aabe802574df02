@@ -1,0 +1,118 @@
+package com.sgic.internal.product.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+//this is an entity table creator N.Harilojunan 18/06/2019
+@Entity
+@Table(schema="productService",name="product")
+public class Product {
+	
+	//this is product registration id and this is auto generated 
+	@Id //this annotations used to define primary key
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name ="product_regi_id")
+	Long productRegiId;
+	
+	@Column(name ="product_comp_name")
+	String productCompName;
+	
+	@Column(name ="product_abbr")
+	String productAbbr;
+	
+	@Column(name ="product_lice_name")
+	String productLicenseName;
+	
+	@Column(name ="product_lice_period")
+	String produtLicensePeriod;	
+	
+	@Column(name ="product_admin_name")
+	String produtItAdminName;
+	
+	@Column(name ="product_start_date")
+	String productStartDate;
+	
+	@Column(name ="product_end_date")
+	String productEndDate;
+	
+	@Column(name ="product_desc")
+	String productDescribtion;
+	
+	//getter setter method
+	public Long getProductRegiId() {
+		return productRegiId;
+	}
+
+	public void setProductRegiId(Long productRegiId) {
+		this.productRegiId = productRegiId;
+	}
+
+	public String getProductCompName() {
+		return productCompName;
+	}
+
+	public void setProductCompName(String productCompName) {
+		this.productCompName = productCompName;
+	}
+
+	public String getProductAbbr() {
+		return productAbbr;
+	}
+
+	public void setProductAbbr(String productAbbr) {
+		this.productAbbr = productAbbr;
+	}
+
+	public String getProductLicenseName() {
+		return productLicenseName;
+	}
+
+	public void setProductLicenseName(String productLicenseName) {
+		this.productLicenseName = productLicenseName;
+	}
+
+	public String getProdutLicensePeriod() {
+		return produtLicensePeriod;
+	}
+
+	public void setProdutLicensePeriod(String produtLicensePeriod) {
+		this.produtLicensePeriod = produtLicensePeriod;
+	}
+
+	public String getProdutItAdminName() {
+		return produtItAdminName;
+	}
+
+	public void setProdutItAdminName(String produtItAdminName) {
+		this.produtItAdminName = produtItAdminName;
+	}
+
+	public String getProductStartDate() {
+		return productStartDate;
+	}
+
+	public void setProductStartDate(String productStartDate) {
+		this.productStartDate = productStartDate;
+	}
+
+	public String getProductEndDate() {
+		return productEndDate;
+	}
+
+	public void setProductEndDate(String productEndDate) {
+		this.productEndDate = productEndDate;
+	}
+
+	public String getProductDescribtion() {
+		return productDescribtion;
+	}
+
+	public void setProductDescribtion(String productDescribtion) {
+		this.productDescribtion = productDescribtion;
+	}
+	
+}

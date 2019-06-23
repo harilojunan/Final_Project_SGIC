@@ -1,0 +1,26 @@
+package com.sgic.internal.product.services;
+
+import java.util.List;
+
+import com.sgic.internal.product.entities.Product;
+
+public interface ProductService {
+	
+	//create the company
+	Product createProduct(Product product);
+	
+	//update the existing product
+	public Product updateProduct(Product product);
+	
+	//delete the existing product by id
+	public void deleteProduct(Long productRegiId);
+	
+	//find or get the product by id
+	public Product findProductById(Long productRegiId);
+	
+	//get all the product by list
+	public List<Product> findAllProduct();
+	
+	
+
+}
